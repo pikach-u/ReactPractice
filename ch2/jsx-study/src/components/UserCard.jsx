@@ -1,9 +1,9 @@
-const UserCard = (props) => {
+const UserCard = ({ name, job, imageSrc }) => {
   return (
     <div className="card">
-      <img src={props.imageSrc} alt={props.name} />
-      <h2>{props.name}</h2>
-      <h2>{props.job}</h2>
+      <img src={imageSrc} alt={name} />
+      <h2>{name}</h2>
+      <h2>{job}</h2>
     </div>
   );
 };
