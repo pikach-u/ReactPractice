@@ -1,4 +1,4 @@
-const Box = ({ name, backgroundColor }) => {
+const Box = ({ name, backgroundColor, isRounded }) => {
   return (
     <div
       style={{
@@ -8,6 +8,7 @@ const Box = ({ name, backgroundColor }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        borderRadius: isRounded ? "9999px" : "",
       }}
     >
       {name}

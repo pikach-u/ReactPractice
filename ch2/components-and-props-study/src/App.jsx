@@ -1,9 +1,9 @@
 import Box from "./components/Box";
 
 const boxList = [
-  { id: 1, name: "1번 박스", backgroundColor: "#FFBFDD" },
-  { id: 2, name: "2번 박스", backgroundColor: "#E0C2FF" },
-  { id: 3, name: "3번 박스", backgroundColor: "#ABD1FF" },
+  { id: 1, name: "1번 박스", backgroundColor: "#FFBFDD", isRounded: false },
+  { id: 2, name: "2번 박스", backgroundColor: "#E0C2FF", isRounded: true },
+  { id: 3, name: "3번 박스", backgroundColor: "#ABD1FF", isRounded: true },
 ];
 
 const App = () => {
@@ -24,6 +24,7 @@ const App = () => {
           key={box.id}
           name={box.name}
           backgroundColor={box.backgroundColor}
+          isRounded={box.isRounded}
         />
       ))}
     </div>
