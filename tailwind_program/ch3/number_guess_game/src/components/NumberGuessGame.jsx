@@ -26,6 +26,11 @@ const NumberGuessGame = () => {
     }
   };
 
+  const handleRestart = () => {
+    setTarget(getRandomTarget);
+    setMessage("");
+    setIsWin(false);
+  };
   return (
     <div className="flex flex-col items-center gap-8 p-8 bg-white shadow-xl rounded-xl max-w-md">
       <h1 className="text-2xl font-bold">🎯 숫자 맞추기 게임</h1>
@@ -49,7 +54,10 @@ const NumberGuessGame = () => {
       <p className="text-lg font-medium">{message}</p>
 
       {isWin && (
-        <button className="mt-4 px-5 py-2 border border-gray-400 rounded-lg hover:bg-gray-100">
+        <button
+          className="mt-4 px-5 py-2 border border-gray-400 rounded-lg hover:bg-gray-100"
+          onClick={handleRestart}
+        >
           다시 시작
         </button>
       )}
