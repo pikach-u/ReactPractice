@@ -6,6 +6,7 @@ const NumberGuessGame = () => {
   const [target, setTarget] = useState(getRandomTarget);
   const [guess, setGuess] = useState("");
   const [message, setMessage] = useState("");
+  const [isWin, setIsWin] = useState(false);
 
   const handleSubmit = () => {
     console.log("타겟: ", target);
@@ -17,6 +18,7 @@ const NumberGuessGame = () => {
     }
     if (num === target) {
       setMessage(`🎉 정답! ${target}입니다.`);
+      setIsWin(true);
     } else if (num < target) {
       setMessage("⬆️ 더 큰 수를 입력하세요.");
     } else {
@@ -34,15 +36,23 @@ const NumberGuessGame = () => {
         type="number"
         value={guess}
         onChange={(event) => setGuess(event.target.value)}
+        disabled={isWin}
       />
       <button
         className="bg-yellow-400 text-white px-6 py-2 rounded-lg 
       hover:bg-yellow-500"
         onClick={handleSubmit}
+        disabled={isWin}
       >
         제출
       </button>
       <p className="text-lg font-medium">{message}</p>
+
+      {isWin && (
+        <button className="mt-4 px-5 py-2 border border-gray-400 rounded-lg hover:bg-gray-100">
+          다시 시작
+        </button>
+      )}
     </div>
   );
 };
