@@ -85,7 +85,7 @@
   },
   {
     "date": 15,
-    "todos": [],
+    "todos": ["🇰🇷 광복절", "🧹 청소하기"],
     "isSat": false,
     "isHoliday": true
   },
