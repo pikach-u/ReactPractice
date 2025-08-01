@@ -20,6 +20,7 @@ const ReactionTimerGame = () => {
     const elapsed = (now - startTime) / 1000;
     const diff = Math.abs(elapsed - 10);
     setResult(diff); //몇 초에 눌렀는지
+    setIsRunning(false);
   };
 
   useEffect(() => {
@@ -36,7 +37,7 @@ const ReactionTimerGame = () => {
     <div className="flex flex-col justify-center items-center gab-8 p-8 bg-white shadow-xl">
       <h1 className="text-2xl font-bold">⏱️ 10초 반응 게임</h1>
 
-      {!isRunning && (
+      {!isRunning && result === null && (
         <button
           className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600"
           onClick={handleStart}
@@ -63,9 +64,7 @@ const ReactionTimerGame = () => {
             ⏱️ {result.toFixed(2)}초 차이로 정답과{" "}
             {result < 0.5 ? "아주 가까웠어요! 🎯" : "조금 멀었어요! 🙏"}
           </p>
-          {timeoutReached && (
-            <p className="text-red-500 mt-2">10초가 지나도 누르지 않았어요!</p>
-          )}
+
           <button
             onClick={handleStart}
             className="mt-6 py-2 border-gray-400 rounded-lg hover:bg-gray-100"
@@ -73,6 +72,10 @@ const ReactionTimerGame = () => {
             다시 도전하기
           </button>
         </div>
+      )}
+
+      {timeoutReached && (
+        <p className="text-red-500 mt-2">10초가 지나도 누르지 않았어요!</p>
       )}
     </div>
   );
