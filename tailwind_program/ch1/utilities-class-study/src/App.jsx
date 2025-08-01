@@ -1,9 +1,11 @@
 const App = () => {
   return (
-    <div className="bg-red-100 min-h-screen flex flex-col md:flex-row-reverse items-center md:items-start gap-6 p-8">
-      <div className="w-1/3 p-4 bg-blue-100 rounded">카드 1</div>
-      <div className="w-1/3 p-4 bg-green-100 rounded">카드 2</div>
-      <div className="w-1/3 p-4 bg-yellow-100 rounded">카드 3</div>
+    <div className="flex flex-col items-center gap-2 bg-gray-50 py-8">
+      <div className="bg-purple-200 p-4 w-64 text-center">첫 번째</div>
+      <div className="bg-purple-300 p-4 w-64 text-center">두 번째</div>
+      <div className="bg-purple-400 p-4 w-64 text-center">세 번째</div>
+      <div className="bg-indigo-300 p-4">짧은 박스</div>
+      <div className="bg-indigo-400 p-10">긴 박스</div>
     </div>
   );
 };
