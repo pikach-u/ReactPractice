@@ -9,7 +9,7 @@ const Counter = () => {
     return () => {
       console.log("Counter가 제거되었습니다");
     };
-  }, [count]);
+  }, []);
 
   return (
     <div className="flex justify-center gap-4">
