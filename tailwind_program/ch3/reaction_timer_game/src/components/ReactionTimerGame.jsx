@@ -4,17 +4,28 @@ const ReactionTimerGame = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [timeoutReached, setTimeoutReached] = useState(false);
   const [startTime, setStartTime] = useState(null);
+  const [result, setResult] = useState(null);
 
   const handleStart = () => {
     setStartTime(Date.now()); //시작 시간값 등록
+    setResult(null);
     setIsRunning(true);
+    setTimeoutReached(false);
+  };
+
+  const handleStop = () => {
+    if (!isRunning || startTime === null) return;
+    const now = Date.now();
+
+    const elapsed = (now - startTime) / 1000;
+    const diff = Math.abs(elapsed - 10);
+    setResult(diff); //몇 초에 눌렀는지
   };
 
   useEffect(() => {
     if (!isRunning) return;
 
     const timer = setTimeout(() => {
-      console.log("10초 지남");
       setTimeoutReached(true);
     }, 10500);
 
@@ -35,16 +46,33 @@ const ReactionTimerGame = () => {
       )}
 
       {isRunning && (
-        <button
-          className="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600"
-          onClick={handleStop}
-        >
-          시작
-        </button>
+        <>
+          <p className="text-lg">10초가 되었다고 생각될 때 누르세요!</p>
+          <button
+            className="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600"
+            onClick={handleStop}
+          >
+            지금!
+          </button>
+        </>
       )}
 
-      {timeoutReached && (
-        <p className="text-red-500 mt-2">10초가 지나도 누르지 않았어요!</p>
+      {result !== null && (
+        <div className="text-center">
+          <p className="text-xl font-bold">
+            ⏱️ {result.toFixed(2)}초 차이로 정답과{" "}
+            {result < 0.5 ? "아주 가까웠어요! 🎯" : "조금 멀었어요! 🙏"}
+          </p>
+          {timeoutReached && (
+            <p className="text-red-500 mt-2">10초가 지나도 누르지 않았어요!</p>
+          )}
+          <button
+            onClick={handleStart}
+            className="mt-6 py-2 border-gray-400 rounded-lg hover:bg-gray-100"
+          >
+            다시 도전하기
+          </button>
+        </div>
       )}
     </div>
   );
