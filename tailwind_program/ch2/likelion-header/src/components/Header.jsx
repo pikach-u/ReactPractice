@@ -1,10 +1,10 @@
 const Header = () => {
   return (
     <header className="bg-white border-b border-gray-100">
-      <div className="flex justify-between max-w-7xl mx-auto font-semibold gap-6">
-        <nav className="flex">
+      <div className="flex justify-between items-center max-w-7xl mx-auto font-semibold">
+        <nav className="flex gap-10 py-5">
           <img src="logo.svg" alt="멋쟁이사자처럼" />
-          <ul className="flex">
+          <ul className="flex gap-8">
             <li>전체강의</li>
             <li className="flex">
               부트캠프<p>국비지원</p>
