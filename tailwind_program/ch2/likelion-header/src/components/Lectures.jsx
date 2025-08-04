@@ -1,8 +1,9 @@
 import LectureCard from "./LectureCard";
+import lectureData from "../lectureData.json";
 
 const Lectures = () => {
   return (
-    <ul className="bg-blue-100 grid grid-cols-4 max-w-7xl mx-auto justify-items-center">
+    <ul className="bg-blue-100 grid grid-cols-4 max-w-7xl mx-auto justify-items-center mt-10">
       <LectureCard
         imageSrc="1.webp"
         title="일은 간편해지고 수익은 성장하는 자동화 스킬 : 파이썬부터 Chat GPT 까지"
@@ -27,6 +28,15 @@ const Lectures = () => {
         price={130000}
         tags={["AI활용", "업무효율", "생성AI"]}
       />
+      {lectureData.map((lectureData, index) => (
+        <LectureCard
+          key={index}
+          imageSrc={lectureData.imageSrc}
+          title={lectureData.title}
+          price={lectureData.price}
+          tags={lectureData.tags}
+        />
+      ))}
     </ul>
   );
 };

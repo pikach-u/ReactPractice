@@ -6,12 +6,12 @@ const LectureCard = ({ imageSrc, title, price, tags }) => {
         src={imageSrc}
         alt={title}
       />
-      <h3 className="mt-2.5">{title}</h3>
+      <h3 className="mt-2.5 truncate">{title}</h3>
       <ul className="mt-2.5 flex gap-1">
         {tags.map((tag, index) => (
           <li
             key={index}
-            className="text-xs rounded bg-gray-200 text-gray-400 px-1 py-0.5 inline-block"
+            className="text-base rounded bg-gray-200 text-gray-400 px-1 py-0.5 inline-block"
           >
             {tag}
           </li>
