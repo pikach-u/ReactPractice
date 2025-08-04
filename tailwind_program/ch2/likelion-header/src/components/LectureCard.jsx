@@ -1,4 +1,4 @@
-const LectureCard = ({ imageSrc, title }) => {
+const LectureCard = ({ imageSrc, title, price }) => {
   return (
     <li className="w-[290px] text-[#222222] text-lg">
       <img
@@ -15,7 +15,7 @@ const LectureCard = ({ imageSrc, title }) => {
           chatGPT
         </li>
       </ul>
-      <h5 className="mt-2.5 font-semibold">50,000원</h5>
+      <h5 className="mt-2.5 font-semibold">{price.toLocaleString()}원</h5>
     </li>
   );
 };
