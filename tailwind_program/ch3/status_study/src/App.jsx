@@ -8,7 +8,8 @@ import PressEffectButton from "./components/PressEffectButton";
 const App = () => {
   return (
     <div className="bg-red-100 min-h-screen flex justify-center items-center">
-      <ColorButton />
+      <ColorButton isPrimary={true} />
+      <ColorButton isPrimary={false} />
     </div>
   );
 };
