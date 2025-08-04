@@ -1,9 +1,9 @@
-import CardGrid from "./components/CardGrid";
+import VisibilityToggle from "./components/VisibilityToggle";
 
 const App = () => {
   return (
     <div className="bg-red-100 min-h-screen flex justify-center items-center">
-      <CardGrid />
+      <VisibilityToggle />
     </div>
   );
 };
