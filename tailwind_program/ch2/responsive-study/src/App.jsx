@@ -1,9 +1,12 @@
 const App = () => {
   return (
-    <div className="bg-red-100 p-6 text-center">
-      <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-700 sm:text-green-700 md:text-yellow-700 lg:text-pink-700 font-bold">
-        반응형 텍스트 크기입니다!
-      </p>
+    <div className="bg-red-100 flex flex-col md:flex-row gap-4 p-6">
+      <button className="bg-blue-500 text-white px-4 py-2 rounded">
+        버튼 A
+      </button>
+      <button className="bg-green-500 text-white px-4 py-2 rounded">
+        버튼 B
+      </button>
     </div>
   );
 };
