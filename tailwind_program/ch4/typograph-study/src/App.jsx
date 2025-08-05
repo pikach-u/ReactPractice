@@ -1,4 +1,7 @@
 import Article from "./components/Article";
+import DarkModeToggle from "./components/DarkModeToggle";
+import DarkText from "./components/DarkText";
+import LoginForm from "./components/LoginForm";
 
 const App = () => {
   return (
@@ -6,7 +9,8 @@ const App = () => {
       className="bg-red-100 min-h-screen flex justify-center 
     items-center Nanum-Square"
     >
-      <Article />
+      <DarkText />
+      <DarkModeToggle />
     </div>
   );
 };
