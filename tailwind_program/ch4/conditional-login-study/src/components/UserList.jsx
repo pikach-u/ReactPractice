@@ -10,6 +10,11 @@ const UserList = () => {
       setName("");
     }
   };
+
+  const deleteUser = (indexToDelete) => {
+    setUsers(users.filter((_, index) => index !== indexToDelete));
+  };
+
   return (
     <div>
       <h2>사용자 목록</h2>
@@ -21,7 +26,12 @@ const UserList = () => {
       <button onClick={addUser}>추가</button>
       <ul>
         {users.map((user, index) => (
-          <li key={index}>{user}</li>
+          <li key={index}>
+            {user}{" "}
+            <button className="ml-2" onClick={() => deleteUser(index)}>
+              삭제
+            </button>
+          </li>
         ))}
       </ul>
     </div>
