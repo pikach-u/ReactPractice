@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+let currentId = 1;
+
 const UserList = () => {
   const [users, setUsers] = useState(["pikachu", "피카츄"]);
   const [name, setName] = useState("");
