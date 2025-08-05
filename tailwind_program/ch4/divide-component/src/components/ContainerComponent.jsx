@@ -16,7 +16,10 @@ const ContainerComponent = () => {
     const fetchUsers = async () => {
       try {
         const res = await fetch("https://jsonplaceholder.typicode.com/users");
-        console.log(res);
+
+        const data = await res.json();
+
+        setUsers(data);
       } catch (err) {
         console.error(err);
       }
