@@ -11,6 +11,10 @@ const UserList = () => {
     }
   };
 
+  const shuffle = () => {
+    setUsers([...users].reverse());
+  };
+
   const deleteUser = (indexToDelete) => {
     setUsers(users.filter((_, index) => index !== indexToDelete));
   };
@@ -24,6 +28,7 @@ const UserList = () => {
         placeholder="이름 입력"
       />
       <button onClick={addUser}>추가</button>
+      <button onClick={shuffle}>셔플</button>
       <ul>
         {users.map((user, index) => (
           <li key={index}>
