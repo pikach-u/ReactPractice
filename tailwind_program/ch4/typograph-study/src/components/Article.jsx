@@ -1,6 +1,6 @@
 const Article = () => {
   return (
-    <article className="prose prose-neutral">
+    <article className="prose prose-neutral max-w-2xl mx-auto p-6">
       <h2>타이포그래피 플러그인으로 정갈한 문서 만들기</h2>
       <p>
         Tailwind의 타이포그래피 플러그인은 마크다운 스타일을 빠르게 정리할 수
