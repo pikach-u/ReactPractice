@@ -1,5 +1,11 @@
+import ThemeSwitcher from "./components/ThemeSwitcher";
+
 const App = () => {
-  return <div>App</div>;
+  return (
+    <div>
+      <ThemeSwitcher />
+    </div>
+  );
 };
 
 export default App;
