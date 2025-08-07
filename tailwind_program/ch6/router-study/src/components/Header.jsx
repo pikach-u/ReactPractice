@@ -11,6 +11,9 @@ const Header = () => {
         <Link className="bg-blue-300 px-4 py-2 rounded" to="/about">
           About
         </Link>
+        <Link className="bg-orange-300 px-4 py-2 rounded" to="/users">
+          Users
+        </Link>
       </nav>
     </header>
   );

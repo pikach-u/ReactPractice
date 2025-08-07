@@ -1,4 +1,11 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 const Users = () => {
+  const [users, setUsers] = useState([]);
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -6,7 +13,7 @@ const Users = () => {
 
         const data = await res.json();
 
-        console.log(data);
+        setUsers(data);
       } catch (error) {
         console.error(error);
       }
@@ -17,7 +24,20 @@ const Users = () => {
 
   return (
     <div className="bg-orange-100 min-h-screen flex flex-col gap-8 justify-center items-center">
-      Users
+      <h1>유저 목록</h1>
+
+      <ul className="mt-8">
+        {users.map((user) => (
+          <li
+            key={user.id}
+            className="flex gap-2 hover:underline hover:text-blue-300 cursor-pointer"
+            onClick={() => navigate(`/user/${user.id}`)}
+          >
+            <p>{user.name}</p>
+            <p>{user.email}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
