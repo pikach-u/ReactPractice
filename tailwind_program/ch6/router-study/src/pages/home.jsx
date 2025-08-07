@@ -7,6 +7,9 @@ const Home = () => {
       <Link className="bg-blue-300 px-4 py-2 rounded" to="/about">
         About 페이지 이동
       </Link>
+      <a className="bg-blue-300 px-4 py-2 rounded" href="/about">
+        About 페이지 이동
+      </a>
     </div>
   );
 };
