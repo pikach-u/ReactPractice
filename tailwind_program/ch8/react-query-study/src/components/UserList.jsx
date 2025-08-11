@@ -1,5 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+
+const fetchUsers = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  if (!res.ok) throw new Error("사용자 정보를 가져오는 데 실패했습니다.");
+  return res.json();
+};
 
 const addUser = async (name) => {
   const res = await fetch("https://jsonplaceholder.typicode.com/users", {
@@ -14,6 +20,8 @@ const addUser = async (name) => {
 };
 
 const UserList = () => {
+  const [newUser, setNewUser] = useState("");
+
   const {
     data: users,
     isLoading,
@@ -27,32 +35,40 @@ const UserList = () => {
     enabled: true,
   });
 
-  const {} = useMutation();
+  const {
+    mutate,
+    isPending,
+    isSuccess,
+    isError: isMutateError,
+    error: mutateError,
+  } = useMutation({
+    mutationFn: addUser,
+    onSuccess: () => {
+      alert(`유저 ${newUser} 생성 완료`);
+    },
+  });
 
-  useEffect(() => {
-    const focusEvent = () => {
-      console.log("focus");
-    };
-
-    const onlineEvent = () => {
-      console.log("online");
-    };
-
-    window.addEventListener("focus", focusEvent);
-
-    window.addEventListener("online", onlineEvent);
-
-    return () => {
-      window.removeEventListener("focus", focusEvent);
-      window.removeEventListener("online", onlineEvent);
-    };
-  }, []);
+  const handleAddUser = (e) => {
+    e.preventDefault();
+    if (newUser.trim()) mutate(newUser);
+  };
 
   if (isLoading) return <p>⏳ 사용자 목록 불러오는 중...</p>;
   if (isError) return <p>❌ 오류 발생: {error.message}</p>;
   return (
     <div>
       <h2>👥 사용자 목록 (React Query)</h2>
+      <form onSubmit={handleAddUser}>
+        <input
+          type="text"
+          placeholder="새 사용자 이름"
+          value={newUser}
+          onChange={(e) => setNewUser(e.target.value)}
+        />
+        <button type="submit" disabled={isPending}>
+          {isPending ? "추가중.." : "사용자 추가"}
+        </button>
+      </form>
       <ul>
         {users.map((user) => (
           <li key={user.id}>
