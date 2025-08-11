@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 
 const fetchUsers = async () => {
@@ -22,6 +22,8 @@ const addUser = async (name) => {
 const UserList = () => {
   const [newUser, setNewUser] = useState("");
 
+  const queryClient = useQueryClient();
+
   const {
     data: users,
     isLoading,
@@ -44,20 +46,24 @@ const UserList = () => {
   } = useMutation({
     mutationFn: addUser,
     onSuccess: () => {
-      alert(`유저 ${newUser} 생성 완료`);
+      setNewUser("");
+      queryClient.invalidateQueries({ queryKey: ["users"] });
     },
   });
 
   const handleAddUser = (e) => {
     e.preventDefault();
+
     if (newUser.trim()) mutate(newUser);
   };
 
   if (isLoading) return <p>⏳ 사용자 목록 불러오는 중...</p>;
   if (isError) return <p>❌ 오류 발생: {error.message}</p>;
+
   return (
     <div>
       <h2>👥 사용자 목록 (React Query)</h2>
+
       <form onSubmit={handleAddUser}>
         <input
           type="text"
@@ -66,9 +72,16 @@ const UserList = () => {
           onChange={(e) => setNewUser(e.target.value)}
         />
         <button type="submit" disabled={isPending}>
-          {isPending ? "추가중.." : "사용자 추가"}
+          {isPending ? "추가 중.." : "사용자 추가"}
         </button>
       </form>
+
+      {isMutateError && (
+        <p className="text-red-500">❌ 추가 실패: {mutateError.message}</p>
+      )}
+
+      {isSuccess && <p className="text-green-500">✅ 사용자 추가 성공!</p>}
+
       <ul>
         {users.map((user) => (
           <li key={user.id}>
