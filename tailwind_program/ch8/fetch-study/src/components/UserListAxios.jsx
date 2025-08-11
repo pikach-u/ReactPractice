@@ -9,18 +9,12 @@ const UserListAxios = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        // const res = await fetch("https://jsonplaceholder.typicode.com/users");
-
-        // if (!res.ok) throw new Error("서버 오류 발생");
-
-        // const data = await res.json();
-        // setUsers(data);
-
         const res = await axios.get(
           "https://jsonplaceholder.typicode.com/users"
         );
 
-        console.log(res);
+        if (!res.status === 200) throw new Error("서버 오류 발생!");
+        setUsers(res.data);
       } catch (err) {
         console.error(err);
         setError(err.message);
