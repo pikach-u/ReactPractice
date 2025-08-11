@@ -1,3 +1,4 @@
+import { Button } from "@radix-ui/themes";
 import { useEffect } from "react";
 
 const Header = ({ profile }) => {
@@ -22,7 +23,9 @@ const Header = ({ profile }) => {
           {profile.one_liner}
         </p>
 
-        <div></div>
+        <div>
+          <Button>GitHub</Button>
+        </div>
       </div>
     </header>
   );
