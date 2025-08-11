@@ -24,7 +24,9 @@ const Header = ({ profile }) => {
         </p>
 
         <div>
-          <Button>GitHub</Button>
+          <Button asChild variant="outline">
+            <a>GitHub</a>
+          </Button>
         </div>
       </div>
     </header>
