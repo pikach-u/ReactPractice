@@ -3,7 +3,7 @@ import UserListFetch from "./components/UserListFetch";
 const App = () => {
   return (
     <div>
-      <UserListFetch />
+      <UserListAxios />
     </div>
   );
 };

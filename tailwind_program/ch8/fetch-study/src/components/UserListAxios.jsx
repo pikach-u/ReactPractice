@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const UserListFetch = () => {
+const UserListAxios = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -42,4 +42,4 @@ const UserListFetch = () => {
   );
 };
 
-export default UserListFetch;
+export default UserListAxios;
