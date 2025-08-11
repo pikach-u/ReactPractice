@@ -8,21 +8,30 @@ const fetchUsers = async () => {
 };
 
 const UserList = () => {
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["users"],
-    queryFn: fetchUsers,
-  });
-  const {} = useQuery({
+  const {
+    data: users,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
     queryKey: ["users"],
     queryFn: fetchUsers,
   });
 
-  useEffect(() => console.log("data", data), [data]);
-  useEffect(() => console.log("isLoading", isLoading), [isLoading]);
-  useEffect(() => console.log("isError", isError), [isError]);
-  useEffect(() => console.log("error", error), [error]);
-
-  return <div>UserList</div>;
+  if (isLoading) return <p>⏳ 사용자 목록 불러오는 중...</p>;
+  if (isError) return <p>❌ 오류 발생: {error.message}</p>;
+  return (
+    <div>
+      <h2>👥 사용자 목록 (React Query)</h2>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            {user.name} ({user.email})
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default UserList;
