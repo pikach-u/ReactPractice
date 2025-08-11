@@ -1,9 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 
-const fetchUsers = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  if (!res.ok) throw new Error("사용자 정보를 가져오는 데 실패했습니다");
+const addUser = async (name) => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name }),
+  });
+  if (!res.ok) throw new Error("사용자 추가 실패");
   return res.json();
 };
 
@@ -16,7 +22,31 @@ const UserList = () => {
   } = useQuery({
     queryKey: ["users"],
     queryFn: fetchUsers,
+    staleTime: 1000 * 60 * 5,
+    retry: 2,
+    enabled: true,
   });
+
+  const {} = useMutation();
+
+  useEffect(() => {
+    const focusEvent = () => {
+      console.log("focus");
+    };
+
+    const onlineEvent = () => {
+      console.log("online");
+    };
+
+    window.addEventListener("focus", focusEvent);
+
+    window.addEventListener("online", onlineEvent);
+
+    return () => {
+      window.removeEventListener("focus", focusEvent);
+      window.removeEventListener("online", onlineEvent);
+    };
+  }, []);
 
   if (isLoading) return <p>⏳ 사용자 목록 불러오는 중...</p>;
   if (isError) return <p>❌ 오류 발생: {error.message}</p>;
