@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 const Home = () => {
+  const { user } = useOutletContext();
+
   return (
     <div className="bg-red-100 min-h-screen flex flex-col gap-8 justify-center items-center">
       Home
-      <Link className="bg-blue-300 px-4 py-2 rounded" to="/about?isHome=true">
-        About
-      </Link>
+      {user && <p>Hello, {user}</p>}
     </div>
   );
 };

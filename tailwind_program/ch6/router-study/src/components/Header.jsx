@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ user, setUser }) => {
   return (
     <header className="bg-purple-200 flex justify-between items-center px-20">
       <h1>logo</h1>
@@ -15,6 +15,11 @@ const Header = () => {
           Users
         </Link>
       </nav>
+      {user ? (
+        <button onClick={() => setUser("")}>Hello, {user}</button>
+      ) : (
+        <button onClick={() => setUser("h662")}>Login</button>
+      )}
     </header>
   );
 };
