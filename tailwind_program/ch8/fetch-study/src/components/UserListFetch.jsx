@@ -27,9 +27,20 @@ const UserListFetch = () => {
   }, []);
 
   if (loading) return <p>⏳ 사용자 목록 불러오는 중...</p>;
-  if (error) return;
+  if (error) return <p>❌ 오류 발생: {error}</p>;
 
-  return <div>UserListFetch</div>;
+  return (
+    <div>
+      <h2>👥 사용자 목록</h2>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            {user.name} {user.email}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default UserListFetch;
