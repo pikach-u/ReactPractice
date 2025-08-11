@@ -1,5 +1,11 @@
+import UserListFetch from "./components/UserListFetch";
+
 const App = () => {
-  return <div>App</div>;
+  return (
+    <div>
+      <UserListFetch />
+    </div>
+  );
 };
 
 export default App;
