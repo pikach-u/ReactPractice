@@ -1,4 +1,4 @@
-import UserListFetch from "./components/UserListFetch";
+import UserListAxios from "./components/UserListAxios";
 
 const App = () => {
   return (
