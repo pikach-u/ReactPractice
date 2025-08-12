@@ -78,7 +78,10 @@ const Header = ({ profile }) => {
             "writing",
             "contact",
           ].map((section, index) => (
-            <button key={section}>{section}</button>
+            <button key={section} className="relative group">
+              {section}
+              <span className="absolute -bottom-1 left-0 w-full h-2 bg-blue-600 group-hover:w-full" />
+            </button>
           ))}
         </nav>
       </div>
