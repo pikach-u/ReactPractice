@@ -13,7 +13,7 @@ const Header = ({ profile }) => {
   return (
     <header
       className="min-h-screen flex flex-col 
-    justify-center items-center text-center px-4 bg-gradient-to-br from-yellow-50 to slate-50"
+    justify-center items-center text-center px-4 bg-gradient-to-br from-yellow-50 to-slate-50"
     >
       <div className="max-w-4xl mx-auto">
         <h1 className="text-6xl font-bold mb-4 animate-fade-in gradient-text">
@@ -37,7 +37,7 @@ const Header = ({ profile }) => {
             <a
               href={profile.links.github_url}
               target="_blank"
-              rel="nooper noreferrer"
+              rel="noopener noreferrer"
             >
               <FaGithubAlt className="w-4 h-4 mr-2" />
               GitHub
@@ -76,7 +76,7 @@ const Header = ({ profile }) => {
         </div>
         <div
           className="inline-block px-6 py-3 bg-yellow-100 
-        text-yellow-700 rounded-full mb-8 border border-yellow-200 animate-pluse-slow"
+        text-yellow-700 rounded-full mb-8 border border-yellow-200 animate-pulse-slow"
         >
           <span className="font-semibold">{profile.availability}</span>
         </div>
