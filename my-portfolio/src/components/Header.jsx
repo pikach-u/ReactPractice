@@ -6,9 +6,12 @@ const Header = ({ profile }) => {
   useEffect(() => console.log(profile), []);
 
   return (
-    <header className="bg-yellow-100 min-h-screen flex flex-col justify-center items-center text-center px-4">
-      <div className="bg-blue-100 max-w-4xl mx-auto">
-        <h1 className="text-6xl font-bold mb-4 animate-fade-in">
+    <header
+      className="min-h-screen flex flex-col 
+    justify-center items-center text-center px-4 bg-gradient-to-br from-yellow-50 to slate-50"
+    >
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-6xl font-bold mb-4 animate-fade-in gradient-text">
           {profile.name}
         </h1>
         <h2
@@ -66,7 +69,10 @@ const Header = ({ profile }) => {
             </a>
           </Button>
         </div>
-        <div className="inline-block px-6 py-3 bg-blue-100 text-blue-700 rounded-full mb-8 border border-blue-200 animate-pluse-slow">
+        <div
+          className="inline-block px-6 py-3 bg-yellow-100 
+        text-yellow-700 rounded-full mb-8 border border-yellow-200 animate-pluse-slow"
+        >
           <span className="font-semibold">{profile.availability}</span>
         </div>
         <nav className="flex flex-wrap justify-center gap-6">
