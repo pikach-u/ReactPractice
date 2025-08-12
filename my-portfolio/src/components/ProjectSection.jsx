@@ -20,74 +20,88 @@ const ProjectsSection = ({ projects }) => {
             <Card key={project.id} size="3">
               <div className="flex flex-col lg:flex-row lg:gap-8">
                 <div className="lg:flex-1">
-                  <div>
-                    <h3>{project.name}</h3>
-                    <FaRegClock />
-                    <div>{project.period}</div>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                    <h3 className="mb-2 sm:mb-0">{project.name}</h3>
+                    <div className="flex items-center gap-2 text-sm">
+                      <FaRegClock className="w-4 h-4" />
+                      {project.period}
+                    </div>
                   </div>
 
-                  <div>
+                  <div className="flex items-center gap-2 mb-4">
                     <Badge>{project.role}</Badge>
                   </div>
 
-                  <p>{project.summary}</p>
+                  <p className="mb-4">{project.summary}</p>
 
-                  <div>
-                    <h4>주요 성과</h4>
-                    <ul>
+                  <div className="mb-6">
+                    <h4 className="mb-3">주요 성과</h4>
+                    <ul className="space-y-2">
                       {project.responsibilities.map((responsibility, index) => (
-                        <li key={index}>{responsibility}</li>
+                        <li key={index} className="text-sm pl-4">
+                          {responsibility}
+                        </li>
                       ))}
                     </ul>
                   </div>
 
                   {project.metrics && (
-                    <div>
-                      <h4>성과 지표</h4>
-                      <div>
+                    <div className="mb-6">
+                      <h4 className="mb-3">성과 지표</h4>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                         {project.metrics.users && (
-                          <div>
-                            <FaRegUser />
-                            {project.metrics.users.toLocaleString()} users
+                          <div className="flex items-center gap-2">
+                            <FaRegUser className="w-4 h-4" />
+                            <span className="text-sm">
+                              {project.metrics.users.toLocaleString()} users
+                            </span>
                           </div>
                         )}
                         {project.metrics.teams && (
-                          <div>
-                            <FaRegUser />
-                            <span>{project.metrics.teams} teams</span>
+                          <div className="flex items-center gap-2">
+                            <FaRegUser className="flex items-center gap-2" />
+                            <span className="text-sm">
+                              {project.metrics.teams} teams
+                            </span>
                           </div>
                         )}
                         {project.metrics.monthly_active_users && (
-                          <div>
-                            <FaArrowTrendUp />
-                            <span>
+                          <div className="flex items-center gap-2">
+                            <FaArrowTrendUp className="w-4 h-4" />
+                            <span className="text-sm">
                               {project.metrics.monthly_active_users} MAU
                             </span>
                           </div>
                         )}
                         {project.metrics.peak_rps && (
-                          <div>
-                            <FaArrowTrendUp />
-                            <span>{project.metrics.peak_rps} RPS</span>
+                          <div className="flex items-center gap-2">
+                            <FaArrowTrendUp className="w-4 h-4" />
+                            <span className="text-sm">
+                              {project.metrics.peak_rps} RPS
+                            </span>
                           </div>
                         )}
                         {project.metrics.p95_latency_ms && (
-                          <div>
-                            <FaRegClock />
-                            <span>p95: {project.metrics.p95_latency_ms}ms</span>
+                          <div className="flex items-center gap-2">
+                            <FaRegClock className="w-4 h-4" />
+                            <span className="text-sm">
+                              p95: {project.metrics.p95_latency_ms}ms
+                            </span>
                           </div>
                         )}
                         {project.metrics.availability && (
-                          <div>
-                            <FaArrowTrendUp />
-                            <span>{project.metrics.availability} uptime</span>
+                          <div className="flex items-center gap-2">
+                            <FaArrowTrendUp className="w-4 h-4" />
+                            <span className="text-sm">
+                              {project.metrics.availability} uptime
+                            </span>
                           </div>
                         )}
                       </div>
                     </div>
                   )}
 
-                  <div>
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {Object.entries(project.stack).map(([category, techs]) =>
                       techs?.map((tech, techIndex) => (
                         <Badge
