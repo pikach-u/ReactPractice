@@ -18,12 +18,14 @@ const SkillsSection = ({ skills }) => {
           Skills
         </h2>
 
-        <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category, index) => (
             <Card key={index} size="2">
-              <h3>{category.title}</h3>
+              <h3 className="text-xl font-semibold mb-4 text-yellow-400">
+                {category.title}
+              </h3>
 
-              <div>
+              <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, skillIndex) => (
                   <Badge key={skillIndex}>{skill}</Badge>
                 ))}
