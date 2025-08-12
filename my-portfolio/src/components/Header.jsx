@@ -78,9 +78,13 @@ const Header = ({ profile }) => {
             "writing",
             "contact",
           ].map((section, index) => (
-            <button key={section} className="relative group">
+            <button
+              key={section}
+              className="relative group animate-fade-up text-gray-600 transition-all duration-300 font-medium capitalize"
+              style={{ animationDelay: `${0.6 + index * 0.1}s` }}
+            >
               {section}
-              <span className="absolute -bottom-1 left-0 w-full h-2 bg-blue-600 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300" />
             </button>
           ))}
         </nav>
