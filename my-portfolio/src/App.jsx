@@ -1,4 +1,5 @@
 import AboutSection from "./components/AboutSection";
+import ContactSection from "./components/ContactSection";
 import ExperienceSection from "./components/ExperienceSection";
 import Header from "./components/Header";
 import ProjectsSection from "./components/ProjectSection";
@@ -23,6 +24,7 @@ const App = () => {
         talks={portfolioData.talks}
         openSource={portfolioData.open_source}
       />
+      <ContactSection contact={portfolioData.contact} />
       <footer className="py-8 px-4 text-center">
         <p className="text-sm">
           © 2025 {portfolioData.profile.name}. All right reserved.
