@@ -53,7 +53,7 @@ const ProjectsSection = ({ projects }) => {
                           <div className="flex items-center gap-2">
                             <FaRegUser className="w-4 h-4" />
                             <span className="text-sm">
-                              {project.metrics.users.toLocaleDateString()} users
+                              {project.metrics.users.toLocaleString()} users
                             </span>
                           </div>
                         )}
